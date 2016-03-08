@@ -53,9 +53,10 @@ namespace UnityStandardAssets._2D
         }
 
 
-        public void Move(float move, bool crouch, bool jump)
+		public void Move(float move, bool crouch, bool jump,bool raw)
         {
-	
+			m_Anim.SetBool("isMoving", raw);
+
             // If crouching, check to see if the character can stand up
             if (!crouch && m_Anim.GetBool("Crouch"))
             {
@@ -65,7 +66,6 @@ namespace UnityStandardAssets._2D
                     crouch = true;
                 }
             }
-			Debug.Log (m_Rigidbody2D.velocity.y);
             // Set whether or not the character is crouching in the animator
 			m_Anim.SetBool("Crouch", crouch);
 			m_Anim_Upper.SetBool("Crouch", crouch);
