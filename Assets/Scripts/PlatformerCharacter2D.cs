@@ -66,6 +66,7 @@ namespace UnityStandardAssets._2D
 
 		public void Fire() {
 			m_Anim_Upper.SetTrigger("Fire");
+			m_Anim.SetTrigger("Fire");
 		}
 
 		public void Move(float move, bool crouch, bool jump,bool isMoving)
