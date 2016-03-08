@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: 86e6e8ec98a69d340ab2857bd109be6f
+timeCreated: 1457272366
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: up_idle_0
+    21300002: up_idle_1
+    21300004: up_idle_2
+    21300006: up_idle_3
+    21300008: up_idle_4
+    21300010: up_idle_5
+    21300012: up_idle_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: up_idle_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 34
+        width: 686
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -81.44444, y: 156.9321}
+        - {x: -82.44444, y: 155.9321}
+        - {x: -84.44444, y: 156.9321}
+        - {x: -135.44444, y: 156.9321}
+        - {x: -135.44444, y: -60.0679}
+        - {x: -68.44444, y: -83.0679}
+        - {x: 33.555557, y: -141.0679}
+        - {x: 86.55556, y: -156.0679}
+        - {x: 136.55556, y: -156.0679}
+        - {x: 136.55556, y: -114.0679}
+        - {x: 103.55556, y: -38.0679}
+        - {x: 19.555557, y: 95.9321}
+        - {x: -73.44444, y: 156.9321}
+    - name: up_idle_1
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 34
+        width: 694
+        height: 767
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -137.19135, y: 152.4321}
+        - {x: -137.19135, y: -44.5679}
+        - {x: -128.19135, y: -62.5679}
+        - {x: -105.191345, y: -41.5679}
+        - {x: -70.191345, y: -79.5679}
+        - {x: 102.808655, y: -151.5679}
+        - {x: 127.808655, y: -151.5679}
+        - {x: 137.80865, y: -148.5679}
+        - {x: 137.80865, y: -123.5679}
+        - {x: 60.808655, y: 7.4320984}
+        - {x: 29.808655, y: 91.4321}
+        - {x: -66.191345, y: 152.4321}
+    - name: up_idle_2
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 37
+        width: 701
+        height: 751
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76.3457, y: 149.61728}
+        - {x: -130.3457, y: 149.61728}
+        - {x: -138.3457, y: 139.61728}
+        - {x: -138.3457, y: -24.38272}
+        - {x: -130.3457, y: -40.38272}
+        - {x: -74.3457, y: -79.38272}
+        - {x: 106.6543, y: -148.38272}
+        - {x: 126.6543, y: -148.38272}
+        - {x: 139.6543, y: -144.38272}
+        - {x: 139.6543, y: -114.38272}
+        - {x: 101.6543, y: -25.38272}
+        - {x: 25.654297, y: 68.61728}
+        - {x: 6.654297, y: 115.61728}
+    - name: up_idle_3
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 44
+        width: 711
+        height: 724
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -127.55554, y: 118.88272}
+        - {x: -111.55554, y: 97.88272}
+        - {x: -140.55554, y: 66.88272}
+        - {x: -140.55554, y: -8.117279}
+        - {x: -134.55554, y: -43.11728}
+        - {x: -78.55554, y: -93.11728}
+        - {x: 55.444458, y: -143.11728}
+        - {x: 138.44446, y: -143.11728}
+        - {x: 141.44446, y: -140.11728}
+        - {x: 141.44446, y: -94.11728}
+        - {x: 5.444458, y: 120.88272}
+        - {x: -85.55554, y: 143.88272}
+        - {x: -131.55554, y: 143.88272}
+        - {x: -137.55554, y: 138.88272}
+    - name: up_idle_4
+      rect:
+        serializedVersion: 2
+        x: 2968
+        y: 37
+        width: 701
+        height: 751
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.456787, y: 149.61728}
+        - {x: -95.45679, y: 149.61728}
+        - {x: -96.45679, y: 148.61728}
+        - {x: -94.45679, y: 135.61728}
+        - {x: -115.45679, y: 148.61728}
+        - {x: -120.45679, y: 149.61728}
+        - {x: -126.45679, y: 149.61728}
+        - {x: -138.45679, y: 84.61728}
+        - {x: -138.45679, y: -92.38272}
+        - {x: 73.54321, y: -148.38272}
+        - {x: 139.54321, y: -148.38272}
+        - {x: 139.54321, y: -72.38272}
+        - {x: 22.543213, y: 136.61728}
+    - name: up_idle_5
+      rect:
+        serializedVersion: 2
+        x: 3710
+        y: 34
+        width: 693
+        height: 767
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.820923, y: 152.4321}
+        - {x: -92.82092, y: 152.4321}
+        - {x: -92.82092, y: 151.4321}
+        - {x: -89.82092, y: 138.4321}
+        - {x: -110.82092, y: 152.4321}
+        - {x: -136.82092, y: 152.4321}
+        - {x: -136.82092, y: -59.5679}
+        - {x: 61.179077, y: -151.5679}
+        - {x: 132.17908, y: -151.5679}
+        - {x: 136.17908, y: -146.5679}
+        - {x: 138.17908, y: -142.5679}
+        - {x: 138.17908, y: -90.5679}
+        - {x: 130.17908, y: -8.567902}
+    - name: up_idle_6
+      rect:
+        serializedVersion: 2
+        x: 4423
+        y: 34
+        width: 686
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 41.358032, y: 82.9321}
+        - {x: -50.641968, y: 156.9321}
+        - {x: -110.64197, y: 156.9321}
+        - {x: -121.64197, y: 135.9321}
+        - {x: -135.64197, y: 59.9321}
+        - {x: -135.64197, y: -6.0679016}
+        - {x: -130.64197, y: -29.067902}
+        - {x: -69.64197, y: -86.0679}
+        - {x: 99.35803, y: -156.0679}
+        - {x: 132.35803, y: -156.0679}
+        - {x: 136.35803, y: -152.0679}
+        - {x: 136.35803, y: -129.0679}
+        - {x: 109.35803, y: -32.0679}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
