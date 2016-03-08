@@ -23,7 +23,7 @@ namespace UnityStandardAssets._2D
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
 		//public GameObject projectile;
-		public float fireRate = 0.5F;
+		public float fireRate = 0.0F;
 		private float nextFire = 0.0F;
 
 
@@ -57,16 +57,18 @@ namespace UnityStandardAssets._2D
 			m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
 			m_Anim_Upper.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
 
-			if (Input.GetButton("Fire1") && Time.time > nextFire) {
+			if (Input.GetButton ("Fire1") /*&& Time.time > nextFire*/) {
 				nextFire = Time.time + fireRate;
 				Fire ();
 				//GameObject clone = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+			} else {
+				m_Anim_Upper.SetBool("FireBool",false);
+
 			}
         }
 
 		public void Fire() {
-			m_Anim_Upper.SetTrigger("Fire");
-			m_Anim.SetTrigger("Fire");
+			m_Anim_Upper.SetBool("FireBool",true);
 		}
 
 		public void Move(float move, bool crouch, bool jump,bool isMoving)
