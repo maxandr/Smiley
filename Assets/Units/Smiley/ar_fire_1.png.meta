@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: 41a57afb5ae86b046b119bd45566f0dc
+timeCreated: 1457448467
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ar_fire_1_0
+    21300002: ar_fire_1_1
+    21300004: ar_fire_1_2
+    21300006: ar_fire_1_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: ar_fire_1_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 101
+        width: 963
+        height: 593
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 232.68463, y: -22.769547}
+        - {x: 178.68463, y: 3.2304535}
+        - {x: 167.68463, y: 5.2304535}
+        - {x: 153.68463, y: -16.769547}
+        - {x: -103.31537, y: 82.23045}
+        - {x: -123.31537, y: 139.23045}
+        - {x: -131.31537, y: 144.23045}
+        - {x: -187.31537, y: 144.23045}
+        - {x: -178.31537, y: -4.7695465}
+        - {x: -217.31537, y: -5.7695465}
+        - {x: -232.31537, y: -20.769547}
+        - {x: -232.31537, y: -46.769547}
+        - {x: -230.31537, y: -54.769547}
+        - {x: -232.31537, y: -59.769547}
+        - {x: -232.31537, y: -96.76955}
+        - {x: -170.31537, y: -142.76955}
+        - {x: 2.6846313, y: -142.76955}
+        - {x: 181.68463, y: -82.76955}
+        - {x: 233.68463, y: -44.769547}
+        - {x: 233.68463, y: -24.769547}
+    - name: ar_fire_1_1
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 98
+        width: 1015
+        height: 591
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40.648254, y: 5.28302}
+        - {x: -43.648254, y: 0.28302002}
+        - {x: -47.648254, y: -12.71698}
+        - {x: -53.648254, y: -21.71698}
+        - {x: -57.648254, y: -24.71698}
+        - {x: -54.648254, y: -22.71698}
+        - {x: -48.648254, y: -12.71698}
+        - {x: -43.648254, y: 3.28302}
+        - {x: -43.648254, y: 39.28302}
+        - {x: -133.64825, y: 143.28302}
+        - {x: -139.64825, y: 143.28302}
+        - {x: -146.64825, y: 136.28302}
+        - {x: -148.64825, y: 119.28302}
+        - {x: -162.64825, y: 141.28302}
+        - {x: -164.64825, y: 143.28302}
+        - {x: -207.64825, y: 143.28302}
+        - {x: -244.64825, y: 27.28302}
+        - {x: -244.64825, y: -142.71698}
+        - {x: 189.35175, y: -142.71698}
+        - {x: 246.35175, y: -134.71698}
+        - {x: 246.35175, y: -7.71698}
+        - {x: 156.35175, y: 35.28302}
+    - name: ar_fire_1_2
+      rect:
+        serializedVersion: 2
+        x: 2299
+        y: 94
+        width: 1022
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 247.22107, y: 3.8531036}
+        - {x: 145.22107, y: 20.853104}
+        - {x: 22.22107, y: 11.853104}
+        - {x: -60.77893, y: 70.8531}
+        - {x: -137.77893, y: 144.8531}
+        - {x: -193.77893, y: 144.8531}
+        - {x: -184.77893, y: 35.853104}
+        - {x: -242.77893, y: -9.146896}
+        - {x: -246.77893, y: -15.146896}
+        - {x: -246.77893, y: -40.146896}
+        - {x: -245.77893, y: -49.146896}
+        - {x: -241.77893, y: -64.1469}
+        - {x: -210.77893, y: -123.1469}
+        - {x: -157.77893, y: -144.1469}
+        - {x: -48.77893, y: -144.1469}
+        - {x: 36.22107, y: -77.1469}
+        - {x: 178.22107, y: -73.1469}
+        - {x: 247.22107, y: -57.146896}
+    - name: ar_fire_1_3
+      rect:
+        serializedVersion: 2
+        x: 3413
+        y: 101
+        width: 815
+        height: 595
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 197.70349, y: -50.269547}
+        - {x: 197.70349, y: -11.2695465}
+        - {x: 77.70349, y: 6.7304535}
+        - {x: -41.29651, y: 74.73045}
+        - {x: -81.29651, y: 134.73045}
+        - {x: -90.29651, y: 141.73045}
+        - {x: -154.29651, y: 141.73045}
+        - {x: -125.29651, y: 14.7304535}
+        - {x: -195.29651, y: -10.2695465}
+        - {x: -195.29651, y: -66.26955}
+        - {x: -158.29651, y: -124.26955}
+        - {x: -81.29651, y: -143.26955}
+        - {x: -22.296509, y: -143.26955}
+        - {x: 17.703491, y: -136.26955}
+        - {x: 95.70349, y: -77.26955}
+        - {x: 192.70349, y: -54.269547}
+      - - {x: -122.29651, y: 142.73045}
+        - {x: -122.29651, y: 144.73045}
+        - {x: -127.29651, y: 144.73045}
+        - {x: -125.29651, y: 141.73045}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

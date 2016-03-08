@@ -22,6 +22,12 @@ namespace UnityStandardAssets._2D
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
+		//public GameObject projectile;
+		public float fireRate = 0.5F;
+		private float nextFire = 0.0F;
+
+
+
         private void Awake()
         {
             // Setting up references.
@@ -50,12 +56,21 @@ namespace UnityStandardAssets._2D
             // Set the vertical animation
 			m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
 			m_Anim_Upper.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+
+			if (Input.GetButton("Fire1") && Time.time > nextFire) {
+				nextFire = Time.time + fireRate;
+				Fire ();
+				//GameObject clone = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+			}
         }
 
+		public void Fire() {
+			m_Anim_Upper.SetTrigger("Fire");
+		}
 
-		public void Move(float move, bool crouch, bool jump,bool raw)
+		public void Move(float move, bool crouch, bool jump,bool isMoving)
         {
-			m_Anim.SetBool("isMoving", raw);
+			m_Anim.SetBool("isMoving", isMoving);
 
             // If crouching, check to see if the character can stand up
             if (!crouch && m_Anim.GetBool("Crouch"))
