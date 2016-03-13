@@ -154,9 +154,13 @@ namespace UnityStandardAssets._2D
 
 				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
 				upper_part_center.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, angle));
+				m_Anim_Upper.SetFloat("ShootAngle", angle);
+				Debug.Log (angle);
 			} else {
 				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
 				upper_part_center.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 0));
+				m_Anim_Upper.SetFloat("ShootAngle", angle);
+				Debug.Log (angle);
 			}
         }
 
@@ -170,7 +174,6 @@ namespace UnityStandardAssets._2D
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
-			Debug.Log ("Flipped");
         }
     }
 }
