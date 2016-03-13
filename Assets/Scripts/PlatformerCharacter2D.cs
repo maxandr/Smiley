@@ -18,6 +18,7 @@ namespace UnityStandardAssets._2D
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
 		private Animator m_Anim;            // Reference to the player's animator component.
 		public  GameObject upper_part;            // Reference to the player's animator component.
+		public  GameObject upper_part_center;            // Reference to the player's animator component.
         private Animator m_Anim_Upper;            // Reference to the player's animator component.
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -109,7 +110,7 @@ namespace UnityStandardAssets._2D
                 }
                     // Otherwise if the input is moving the player left and the player is facing right...
                 else if (move < 0 && m_FacingRight)
-                {
+                { 
                     // ... flip the player.
                     Flip();
                 }
@@ -123,6 +124,13 @@ namespace UnityStandardAssets._2D
 				m_Anim_Upper.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             }
+
+			var pos = Camera.main.WorldToScreenPoint(transform.position);
+			var dir = Input.mousePosition - pos;
+			var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+			//upper_part.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); 
+			//upper_part.transform.RotateAround(Vector3.zero,Vector3.forward,angle);//upper_part_center.transform.Gett
+			upper_part_center.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
 
 
