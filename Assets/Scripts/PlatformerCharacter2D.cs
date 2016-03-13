@@ -133,14 +133,14 @@ namespace UnityStandardAssets._2D
 			var pos_smiley = Camera.main.WorldToScreenPoint (transform.position);
 			var dir = Input.mousePosition - pos;
 			var dir_smiley = Input.mousePosition - pos_smiley;
-			if (dir.x < 0 && dir_smiley.x > 0) {
+			/*if (dir.x < 0 && dir_smiley.x > 0) {
 				dir.x *= -1;
 				dir.y *= -1;
 			}
 			else if (dir.x > 0 && dir_smiley.x < 0) {
 				dir.x *= -1;
 				dir.y *= -1;
-			}
+			}*/
 			int tX = 1;
 			if (aimed) {
 				if (dir_smiley.x < 0 && m_FacingRight) {
