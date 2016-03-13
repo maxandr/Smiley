@@ -27,7 +27,8 @@ namespace UnityStandardAssets._2D
 		public float fireRate = 0.0F;
 		private float nextFire = 0.0F;
 
-
+		public  GameObject gunpoint;            // Reference to the player's animator component.
+		private bool aimed = false;
 
         private void Awake()
         {
@@ -57,14 +58,18 @@ namespace UnityStandardAssets._2D
             // Set the vertical animation
 			m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
 			m_Anim_Upper.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
-
-			if (Input.GetButton ("Fire1") /*&& Time.time > nextFire*/) {
+			if (Input.GetButton ("Fire2")) {
+				aimed = true;			
+			} else {
+				aimed = false;			
+			}
+			if (Input.GetButton ("Fire1")) {
 				nextFire = Time.time + fireRate;
 				Fire ();
+				aimed = true;			
 				//GameObject clone = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
 			} else {
 				m_Anim_Upper.SetBool("FireBool",false);
-
 			}
         }
 
@@ -124,13 +129,35 @@ namespace UnityStandardAssets._2D
 				m_Anim_Upper.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             }
-
-			var pos = Camera.main.WorldToScreenPoint(transform.position);
+			var pos = Camera.main.WorldToScreenPoint (gunpoint.transform.position);
+			var pos_smiley = Camera.main.WorldToScreenPoint (transform.position);
 			var dir = Input.mousePosition - pos;
-			var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-			//upper_part.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); 
-			//upper_part.transform.RotateAround(Vector3.zero,Vector3.forward,angle);//upper_part_center.transform.Gett
-			upper_part_center.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+			var dir_smiley = Input.mousePosition - pos_smiley;
+			if (dir.x < 0 && dir_smiley.x > 0) {
+				dir.x *= -1;
+				dir.y *= -1;
+			}
+			else if (dir.x > 0 && dir_smiley.x < 0) {
+				dir.x *= -1;
+				dir.y *= -1;
+			}
+			int tX = 1;
+			if (aimed) {
+				if (dir_smiley.x < 0 && m_FacingRight) {
+					Flip ();
+				} else if (dir_smiley.x > 0 && !m_FacingRight) {
+					Flip ();
+				}
+				if (!m_FacingRight) {
+					tX = -1;
+				}
+
+				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
+				upper_part_center.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, angle));
+			} else {
+				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
+				upper_part_center.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 0));
+			}
         }
 
 
@@ -143,6 +170,7 @@ namespace UnityStandardAssets._2D
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+			Debug.Log ("Flipped");
         }
     }
 }
