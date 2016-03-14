@@ -33,6 +33,9 @@ namespace UnityStandardAssets._2D
 		public  float bulletSpeed=50.0f;            // Reference to the player's animator component.
 		private bool aimed = false;
 
+		public  GameObject sleeve_prefab;            // Reference to the player's animator component.
+		public  GameObject sleeve_spot;            // Reference to the player's animator component.
+
         private void Awake()
         {
             // Setting up references.
@@ -72,6 +75,9 @@ namespace UnityStandardAssets._2D
 			Vector2 a =new Vector2((mousePos.x - gunpoint.transform.position.x) , (mousePos.y- gunpoint.transform.position.y) );
 			a.Normalize ();
 			clone.GetComponent<Rigidbody2D> ().velocity = a * bulletSpeed;
+
+			GameObject sleeve1 = Instantiate (sleeve_prefab, sleeve_spot.transform.position, pAngle/* bullet_instantiate.transform.rotation*/) as GameObject;
+			sleeve1.GetComponent<Sleeve_script> ().Create (m_FacingRight);
 		}
 
 		public void Move(float move, bool crouch, bool jump,bool isMoving)
