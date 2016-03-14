@@ -82,8 +82,10 @@ namespace UnityStandardAssets._2D
 			var dir_smiley = Input.mousePosition - pos_smiley;
 			//Shooting
 			if (Input.GetButton ("Fire2")) {
+				m_Anim_Upper.SetBool("Aimed",true);
 				aimed = true;			
 			} else {
+				m_Anim_Upper.SetBool("Aimed",false);
 				aimed = false;			
 			}
 			int tX = 1;
@@ -91,11 +93,14 @@ namespace UnityStandardAssets._2D
 				nextFire = Time.time + fireRate;
 				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
 				Fire (Quaternion.Euler (new Vector3 (0, 0, angle)),move);
-				m_Anim_Upper.SetBool("FireBool",true);
+			} 
+			if (Input.GetButton ("Fire1")) {
+				m_Anim_Upper.SetBool ("FireBool", true);
 			} else {
-				m_Anim_Upper.SetBool("FireBool",false);
+				m_Anim_Upper.SetBool ("FireBool", false);
 			}
 			if(Input.GetButton ("Fire1")) {
+				m_Anim_Upper.SetBool("Aimed",true);
 				aimed = true;	
 			}
 			//Rotating
