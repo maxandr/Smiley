@@ -66,20 +66,59 @@ namespace UnityStandardAssets._2D
         }
 
 		public void Fire(Quaternion pAngle,float move) {
-			//m_Anim_Upper.SetBool("FireBool",true);
-			//aimed = true;			
 			Vector2 mousePos = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, Camera.main.ScreenToWorldPoint (Input.mousePosition).y);
-
 			RaycastHit2D hit = Physics2D.Raycast(new Vector2 (bullet_instantiate.transform.position.x,bullet_instantiate.transform.position.y), mousePos - new Vector2 (bullet_instantiate.transform.position.x,bullet_instantiate.transform.position.y),100);
-			//Debug.DrawLine(bullet_instantiate.transform.position, (new Vector3(mousePos.x,mousePos.y) - bullet_instantiate.transform.position) * 100, Color.cyan);
-			GameObject clone ;
-			clone = Instantiate (bullet, bullet_instantiate.transform.position,pAngle/* bullet_instantiate.transform.rotation*/) as GameObject;
-			clone.GetComponent<Rigidbody2D>().velocity = new Vector2((mousePos.x - gunpoint.transform.position.x) * bulletSpeed, (mousePos.y- gunpoint.transform.position.y) * bulletSpeed);
+			GameObject clone = Instantiate (bullet, bullet_instantiate.transform.position, pAngle/* bullet_instantiate.transform.rotation*/) as GameObject;
+			Vector2 a =new Vector2((mousePos.x - gunpoint.transform.position.x) , (mousePos.y- gunpoint.transform.position.y) );
+			a.Normalize ();
+			clone.GetComponent<Rigidbody2D> ().velocity = a * bulletSpeed;
 		}
 
 		public void Move(float move, bool crouch, bool jump,bool isMoving)
         {
-			
+			var pos = Camera.main.WorldToScreenPoint (gunpoint.transform.position);
+			var pos_smiley = Camera.main.WorldToScreenPoint (transform.position);
+			var dir = Input.mousePosition - pos;
+			var dir_smiley = Input.mousePosition - pos_smiley;
+			//Shooting
+			if (Input.GetButton ("Fire2")) {
+				aimed = true;			
+			} else {
+				aimed = false;			
+			}
+			int tX = 1;
+			if (Input.GetButton ("Fire1") && nextFire<=Time.time) {
+				nextFire = Time.time + fireRate;
+				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
+				Fire (Quaternion.Euler (new Vector3 (0, 0, angle)),move);
+				m_Anim_Upper.SetBool("FireBool",true);
+			} else {
+				m_Anim_Upper.SetBool("FireBool",false);
+			}
+			if(Input.GetButton ("Fire1")) {
+				aimed = true;	
+			}
+			//Rotating
+
+
+			if (aimed) {
+				if (dir_smiley.x < 0 && m_FacingRight) {
+					Flip ();
+				} else if (dir_smiley.x > 0 && !m_FacingRight) {
+					Flip ();
+				}
+				if (!m_FacingRight) {
+					tX = -1;
+				}
+
+				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
+				upper_part_center.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, angle));
+				m_Anim_Upper.SetFloat("ShootAngle", angle);
+			} else {
+				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
+				upper_part_center.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 0));
+				m_Anim_Upper.SetFloat("ShootAngle", angle);
+			}
 			m_Anim.SetBool("isMoving", isMoving);
 
             // If crouching, check to see if the character can stand up
@@ -109,13 +148,13 @@ namespace UnityStandardAssets._2D
                 m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
                 // If the input is moving the player right and the player is facing left...
-                if (move > 0 && !m_FacingRight)
+                if (move > 0 && !m_FacingRight && !aimed)
                 {
                     // ... flip the player.
                     Flip();
                 }
                     // Otherwise if the input is moving the player left and the player is facing right...
-                else if (move < 0 && m_FacingRight)
+				else if (move < 0 && m_FacingRight&&!aimed)
                 { 
                     // ... flip the player.
                     Flip();
@@ -130,60 +169,10 @@ namespace UnityStandardAssets._2D
 				m_Anim_Upper.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             }
-			var pos = Camera.main.WorldToScreenPoint (gunpoint.transform.position);
-			var pos_smiley = Camera.main.WorldToScreenPoint (transform.position);
-			var dir = Input.mousePosition - pos;
-			var dir_smiley = Input.mousePosition - pos_smiley;
-			//Shooting
-			if (Input.GetButton ("Fire2")) {
-				aimed = true;			
-			} else {
-				aimed = false;			
-			}
-			int tX = 1;
-			if (Input.GetButton ("Fire1") && nextFire<=Time.time) {
-				nextFire = Time.time + fireRate;
-				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
-				if (move < 0) {
-					Quaternion tQ = Quaternion.Euler (new Vector3 (0, 0, angle));
-					tQ.x *= -1;
-					Fire (tQ,move);
-				} else {
-					Fire (Quaternion.Euler (new Vector3 (0, 0, angle)),move);
-				}
-				m_Anim_Upper.SetBool("FireBool",true);
-			} else {
-				m_Anim_Upper.SetBool("FireBool",false);
-			}
-			if(Input.GetButton ("Fire1")) {
-				aimed = true;	
-			}
-			//Rotating
 
-
-			if (aimed) {
-				if (dir_smiley.x < 0 && m_FacingRight) {
-					Flip ();
-				} else if (dir_smiley.x > 0 && !m_FacingRight) {
-					Flip ();
-				}
-				if (!m_FacingRight) {
-					tX = -1;
-				}
-
-				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
-				upper_part_center.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, angle));
-				m_Anim_Upper.SetFloat("ShootAngle", angle);
-			} else {
-				var angle = Mathf.Atan2 (dir.y, tX * dir.x) * Mathf.Rad2Deg;
-				upper_part_center.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 0));
-				m_Anim_Upper.SetFloat("ShootAngle", angle);
-			}
 
 
         }
-
-
         private void Flip()
         {
             // Switch the way the player is labelled as facing.
