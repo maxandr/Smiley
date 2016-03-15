@@ -77,9 +77,10 @@ namespace UnityStandardAssets._2D
 			Vector2 a =new Vector2((mousePos.x - gunpoint.transform.position.x) , (mousePos.y- gunpoint.transform.position.y) );
 			a.Normalize ();
 			clone.GetComponent<Rigidbody2D> ().velocity = a * bulletSpeed;
-
-			GameObject sleeve1 = Instantiate (sleeve_prefab, sleeve_spot.transform.position, pAngle/* bullet_instantiate.transform.rotation*/) as GameObject;
-			sleeve1.GetComponent<Sleeve_script> ().Create (m_FacingRight);
+			if (upper_part.GetComponent<WeaponSwapper> ().Current != WeaponSwapper.gunTypes.PLAZMAGUN) {
+				GameObject sleeve1 = Instantiate (sleeve_prefab, sleeve_spot.transform.position, pAngle/* bullet_instantiate.transform.rotation*/) as GameObject;
+				sleeve1.GetComponent<Sleeve_script> ().Create (m_FacingRight);
+			}
 		}
 
 		public void Move(float move, bool crouch, bool jump,bool isMoving)
@@ -184,13 +185,13 @@ namespace UnityStandardAssets._2D
 				}
 
                 // If the input is moving the player right and the player is facing left...
-                if (move > 0 && !m_FacingRight && !aimed)
+				if (move > 0 && !m_FacingRight && !aimed&&!shooting)
                 {
                     // ... flip the player.
                     Flip();
                 }
                     // Otherwise if the input is moving the player left and the player is facing right...
-				else if (move < 0 && m_FacingRight&&!aimed)
+				else if (move < 0 && m_FacingRight&&!aimed&&!shooting)
                 { 
                     // ... flip the player.
                     Flip();
