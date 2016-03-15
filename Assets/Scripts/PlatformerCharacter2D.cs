@@ -5,7 +5,8 @@ namespace UnityStandardAssets._2D
 {
     public class PlatformerCharacter2D : MonoBehaviour
     {
-        [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
+		[SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
+        [SerializeField] private float m_MaxAimedSpeed = 5f;                    // The fastest the player can travel in the x axis.
         [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
         [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
@@ -32,6 +33,7 @@ namespace UnityStandardAssets._2D
 		public  GameObject bullet;            // Reference to the player's animator component.
 		public  float bulletSpeed=50.0f;            // Reference to the player's animator component.
 		private bool aimed = false;
+		private bool shooting = false;
 
 		public  GameObject sleeve_prefab;            // Reference to the player's animator component.
 		public  GameObject sleeve_spot;            // Reference to the player's animator component.
@@ -82,16 +84,30 @@ namespace UnityStandardAssets._2D
 
 		public void Move(float move, bool crouch, bool jump,bool isMoving)
         {
+
+			if (m_Grounded && jump && m_Anim.GetBool("Ground"))
+			{
+				// Add a vertical force to the player.
+				m_Grounded = false;
+				m_Anim.SetBool("Ground", false);
+				m_Anim_Upper.SetBool("Ground", false);
+				m_Anim_Upper.SetBool("Aimed", false);
+				m_Anim.SetBool("Aimed", false);
+				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			}
+
 			var pos = Camera.main.WorldToScreenPoint (gunpoint.transform.position);
 			var pos_smiley = Camera.main.WorldToScreenPoint (transform.position);
 			var dir = Input.mousePosition - pos;
 			var dir_smiley = Input.mousePosition - pos_smiley;
 			//Shooting
-			if (Input.GetButton ("Fire2")) {
+			if (Input.GetButton ("Fire2") && m_Grounded) {
 				m_Anim_Upper.SetBool("Aimed",true);
+				m_Anim.SetBool("Aimed",true);
 				aimed = true;			
 			} else {
 				m_Anim_Upper.SetBool("Aimed",false);
+				m_Anim.SetBool("Aimed",false);
 				aimed = false;			
 			}
 			int tX = 1;
@@ -102,17 +118,21 @@ namespace UnityStandardAssets._2D
 			} 
 			if (Input.GetButton ("Fire1")) {
 				m_Anim_Upper.SetBool ("FireBool", true);
+				shooting = true;
 			} else {
 				m_Anim_Upper.SetBool ("FireBool", false);
+				shooting = false;
 			}
+			/*
 			if(Input.GetButton ("Fire1")) {
 				m_Anim_Upper.SetBool("Aimed",true);
+				m_Anim.SetBool("Aimed",true);
 				aimed = true;	
-			}
+			}*/
 			//Rotating
 
 
-			if (aimed) {
+			if (aimed||shooting) {
 				if (dir_smiley.x < 0 && m_FacingRight) {
 					Flip ();
 				} else if (dir_smiley.x > 0 && !m_FacingRight) {
@@ -156,7 +176,12 @@ namespace UnityStandardAssets._2D
 				m_Anim_Upper.SetFloat("Speed", Mathf.Abs(move));
 
                 // Move the character
-                m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
+				if (aimed) {
+					m_Rigidbody2D.velocity = new Vector2 (move * m_MaxAimedSpeed, m_Rigidbody2D.velocity.y);
+
+				} else {
+					m_Rigidbody2D.velocity = new Vector2 (move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
+				}
 
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !m_FacingRight && !aimed)
@@ -172,14 +197,7 @@ namespace UnityStandardAssets._2D
                 }
             }
             // If the player should jump...
-            if (m_Grounded && jump && m_Anim.GetBool("Ground"))
-            {
-                // Add a vertical force to the player.
-                m_Grounded = false;
-				m_Anim.SetBool("Ground", false);
-				m_Anim_Upper.SetBool("Ground", false);
-                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-            }
+           
 
 
 
